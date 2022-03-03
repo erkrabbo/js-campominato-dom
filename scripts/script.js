@@ -80,6 +80,8 @@ function stepOnIt(){
 }
 
 function placeBombs(){
+    bombs = [];
+    
     for (let i = 0; i < bombsNumber; i++){
         let bomb = Math.floor(Math.random() * blockNumber) + 1;
         do{

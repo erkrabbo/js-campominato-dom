@@ -19,7 +19,7 @@ main {
     height: calc(100% - var(--header-height) - var(--footer-height));
     background-color: lightgreen;
 
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 .main{
@@ -74,7 +74,7 @@ main {
 }
 
 .box.clicked{
-    background-color: blue;
+    background-color: darkblue;
     color: white;
 }
 

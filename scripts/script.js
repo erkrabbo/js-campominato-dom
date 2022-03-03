@@ -59,10 +59,15 @@ function createGrid(){
 }
 
 function squareBoxes(){
+    const main = document.body.querySelector('main');
+    // const maxHeight = main.clientHeight;
+
     const playGrid = document.querySelector('#gridSpace');
     boxes = document.querySelectorAll('.box');
 
     playGrid.style.height = `${playGrid.offsetWidth}px`;
+    playGrid.style.maxHeight = `calc(${main.clientHeight}px - 20px)`;
+    playGrid.style.maxWidth = `calc(${main.clientHeight}px - 20px)`;
 
     for (i=0; i<boxes.length; i++){
         boxes[i].style.width = `calc(100% / ${Math.sqrt(blockNumber)}`;

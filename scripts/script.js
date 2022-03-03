@@ -40,7 +40,7 @@ function createGrid(){
     }
     
     stepsGoal = parseInt(blockNumber / 2);
-    
+
     let gridSpace = document.createElement('div');
 
     gridSpace.setAttribute('id', 'gridSpace');
@@ -118,7 +118,6 @@ function revealBombs(){
             boxes[i].classList.add('clicked');
         }
     }
-    console.log(safeSteps.length)
 }
 
 function win(){

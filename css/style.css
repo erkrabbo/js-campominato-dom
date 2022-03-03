@@ -78,6 +78,12 @@ main {
     color: white;
 }
 
+.box.bomb{
+    background-color: red;
+    color: white;
+}
+}
+
 #gridSpace {
     max-width: 500px;
 }

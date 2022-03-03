@@ -4,8 +4,11 @@ const gridSpaceContainer = document.body.querySelector('#gridSpaceContainer');
 const difficultySelector = document.body.querySelector('#level');
 let boxes = document.querySelectorAll('.box');
 
+const bombsNumber = 16;
 let areThereElements = false;
 let blockNumber = 0;
+
+let bombs = [];
 
 window.addEventListener('resize', squareBoxes)
 window.addEventListener('load', createGrid)
@@ -46,28 +49,45 @@ function createGrid(){
 
         gridSpace.append(block);
     }
-
-    
-
     squareBoxes();
+
+    placeBombs();
 }
 
 function squareBoxes(){
     const playGrid = document.querySelector('#gridSpace');
-    const boxes = document.querySelectorAll('.box');
+    boxes = document.querySelectorAll('.box');
 
     playGrid.style.height = `${playGrid.offsetWidth}px`;
 
     for (i=0; i<boxes.length; i++){
         boxes[i].style.width = `calc(100% / ${Math.sqrt(blockNumber)}`;
         boxes[i].style.height =`${boxes[i].style.width}`;
-        console.log(boxes[i].style.width);
+        boxes[i].setAttribute('cell-index', `${i + 1}`);
+
         boxes[i].addEventListener('click', stepOnIt);
     }
 }
 
 function stepOnIt(){
-    this.classList.add('clicked');
+    const index = parseInt(this.getAttribute('cell-index'));
+    if (bombs.includes(index)){
+        this.classList.add('bomb');
+    } else{
+        this.classList.add('clicked');
+    }
+
+}
+
+function placeBombs(){
+    for (let i = 0; i < bombsNumber; i++){
+        let bomb = Math.floor(Math.random() * blockNumber) + 1;
+        do{
+            bomb = Math.floor(Math.random() * blockNumber) + 1;
+        } while (bombs.includes(bomb));
+
+        bombs.push(bomb);
+    }
 }
 
 

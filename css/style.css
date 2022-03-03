@@ -88,6 +88,27 @@ main {
     max-width: 500px;
 }
 
+#finalmessage{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+    color: white;
+
+    display: none;
+}
+
+#finalmessage.win{
+    background-color: blue;
+}
+
+#finalemessage.lose{
+    background-color: red;
+}
+
 
 /*      MEDIA     */
 

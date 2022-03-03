@@ -9,6 +9,7 @@ let areThereElements = false;
 let blockNumber = 0;
 
 let bombs = [];
+let safeSteps = [];
 
 window.addEventListener('resize', squareBoxes)
 window.addEventListener('load', createGrid)
@@ -66,24 +67,28 @@ function squareBoxes(){
         boxes[i].setAttribute('cell-index', `${i + 1}`);
 
         boxes[i].addEventListener('click', stepOnIt);
+        boxes[i].addEventListener('click', win);
     }
 }
 
 function stepOnIt(){
-    const index = parseInt(this.getAttribute('cell-index'));
+    let index = parseInt(this.getAttribute('cell-index'));
     if (bombs.includes(index)){
-        this.classList.add('bomb');
+        lose();
+        revealBombs();
     } else{
         this.classList.add('clicked');
+        safeSteps.push(index);
     }
 
 }
 
 function placeBombs(){
     bombs = [];
-    
+    safeSteps = [];
+
     for (let i = 0; i < bombsNumber; i++){
-        let bomb = Math.floor(Math.random() * blockNumber) + 1;
+        let bomb;
         do{
             bomb = Math.floor(Math.random() * blockNumber) + 1;
         } while (bombs.includes(bomb));
@@ -92,6 +97,28 @@ function placeBombs(){
     }
 }
 
+function revealBombs(){
 
+    for (let i = 0; i < blockNumber; i++){
+        index = parseInt(boxes[i].getAttribute('cell-index'));
 
+        if (bombs.includes(index)){
+            boxes[i].classList.add('bomb');
+        } else{
+            boxes[i].classList.add('clicked');
+        }
+    }
+    console.log(safeSteps.length)
+}
+
+function win(){
+    if(safeSteps.length == 8){
+        console.log('you win');
+        revealBombs();
+    }
+}
+
+function lose(){
+    console.log('you lose');
+}
      

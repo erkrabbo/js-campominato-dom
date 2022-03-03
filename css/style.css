@@ -88,24 +88,26 @@ main {
     max-width: 500px;
 }
 
-#finalmessage{
+.finalmessage{
     position: fixed;
     top: 50%;
     left: 50%;
 
     transform: translate(-50%, -50%);
 
-    border-radius: 50%;
+    padding: 3rem;
+    text-align: center;
+    border-radius: 3rem;
     color: white;
 
     display: none;
 }
 
-#finalmessage.win{
+.finalmessage.win{
     background-color: blue;
 }
 
-#finalemessage.lose{
+.finalmessage.lose{
     background-color: red;
 }
 

@@ -1,4 +1,5 @@
 const btnPlay = document.getElementById('btnPlay');
+const finalmessage = document.querySelector('.finalmessage');
 
 const gridSpaceContainer = document.body.querySelector('#gridSpaceContainer');
 const difficultySelector = document.body.querySelector('#level');
@@ -16,6 +17,8 @@ window.addEventListener('load', createGrid)
 btnPlay.addEventListener('click', createGrid);
 
 function createGrid(){
+
+    finalmessage.setAttribute('style','display: none');
 
     if(areThereElements){
         gridSpaceContainer.removeChild(document.body.querySelector('#gridSpace'));
@@ -75,7 +78,6 @@ function stepOnIt(){
     let index = parseInt(this.getAttribute('cell-index'));
     if (bombs.includes(index)){
         lose();
-        revealBombs();
     } else{
         this.classList.add('clicked');
         safeSteps.push(index);
@@ -113,12 +115,17 @@ function revealBombs(){
 
 function win(){
     if(safeSteps.length == 8){
-        console.log('you win');
+        finalmessage.innerHTML = `<h1>YOU WIN<\h1><span>Safe steps: ${safeSteps.length}<\span>`
+        finalmessage.classList.add('win');
+        finalmessage.setAttribute('style','display: block');
         revealBombs();
     }
 }
 
 function lose(){
-    console.log('you lose');
+    finalmessage.innerHTML = `<h1>YOU LOSE<\h1><span>Safe steps: ${safeSteps.length}<\span>`
+        finalmessage.classList.add('lose');
+        finalmessage.setAttribute('style','display: block');
+    revealBombs();
 }
      

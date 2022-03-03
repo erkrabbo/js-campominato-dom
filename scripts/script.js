@@ -44,7 +44,9 @@ function createGrid(){
     let gridSpace = document.createElement('div');
 
     gridSpace.setAttribute('id', 'gridSpace');
-    gridSpace.setAttribute('class', 'col d-flex flex-wrap justify-content-center align-content-center')
+    gridSpace.style.minWidth = '280px';
+    gridSpace.style.minHeight = '200px';
+    gridSpace.setAttribute('class', 'col d-flex flex-wrap justify-content-center align-content-center');
     gridSpaceContainer.append(gridSpace);
 
     areThereElements = true;

@@ -19,7 +19,7 @@ main {
     height: calc(100% - var(--header-height) - var(--footer-height));
     background-color: lightgreen;
 
-    /* overflow-y: auto; */
+    overflow-y: auto;
 }
 
 .main{
@@ -81,11 +81,6 @@ main {
 .box.bomb{
     background-color: red;
     color: white;
-}
-}
-
-#gridSpace {
-    max-width: 500px;
 }
 
 .finalmessage{

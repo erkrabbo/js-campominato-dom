@@ -6,6 +6,7 @@ const difficultySelector = document.body.querySelector('#level');
 let boxes = document.querySelectorAll('.box');
 
 const bombsNumber = 16;
+let stepsGoal;
 let areThereElements = false;
 let blockNumber = 0;
 
@@ -37,6 +38,8 @@ function createGrid(){
         default:
             blockNumber = 100;
     }
+    
+    stepsGoal = parseInt(blockNumber / 2);
     
     let gridSpace = document.createElement('div');
 
@@ -119,7 +122,7 @@ function revealBombs(){
 }
 
 function win(){
-    if(safeSteps.length == 8){
+    if(safeSteps.length == stepsGoal){
         finalmessage.innerHTML = `<h1>YOU WIN<\h1><span>Safe steps: ${safeSteps.length}<\span>`
         finalmessage.classList.add('win');
         finalmessage.setAttribute('style','display: block');

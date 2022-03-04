@@ -114,6 +114,8 @@ function revealBombs(){
     for (let i = 0; i < blockNumber; i++){
         index = parseInt(boxes[i].getAttribute('cell-index'));
 
+        boxes[i].removeEventListener('click', stepOnIt);
+
         if (bombs.includes(index)){
             boxes[i].classList.add('bomb');
         } else{

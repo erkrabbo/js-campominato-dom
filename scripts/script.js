@@ -90,7 +90,9 @@ function stepOnIt(){
         lose();
     } else{
         this.classList.add('clicked');
-        safeSteps.push(index);
+        if (!(safeSteps.includes(index))){
+            safeSteps.push(index);
+        } 
     }
 
 }
